@@ -38,12 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
+
 #include <QString>
+#ifdef QT_NETWORK_LIB
 #include <QtNetwork/QHostInfo>
+#endif
 
 class QtNetworkSettings
 {
 public:
+
     static QString serverLocalName()
     {
         return QString("qt-test-server");
@@ -72,20 +76,85 @@ public:
     }
 #endif
 
-};
+    static bool compareReplyIMAP(QByteArray const& actual)
+    {
+        QList<QByteArray> expected;
+
+        // Mandriva; old test server
+        expected << QByteArray( "* OK [CAPABILITY IMAP4 IMAP4rev1 LITERAL+ ID STARTTLS LOGINDISABLED] " )
+            .append(QtNetworkSettings::serverName().toAscii())
+            .append(" Cyrus IMAP4 v2.3.11-Mandriva-RPM-2.3.11-6mdv2008.1 server ready\r\n");
+
+        // Ubuntu 10.04; new test server
+        expected << QByteArray( "* OK " )
+            .append(QtNetworkSettings::serverLocalName().toAscii())
+            .append(" Cyrus IMAP4 v2.2.13-Debian-2.2.13-19 server ready\r\n");
+
+        // Feel free to add more as needed
+
+        Q_FOREACH (QByteArray const& ba, expected) {
+            if (ba == actual) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    static bool compareReplyIMAPSSL(QByteArray const& actual)
+    {
+        QList<QByteArray> expected;
+
+        // Mandriva; old test server
+        expected << QByteArray( "* OK [CAPABILITY IMAP4 IMAP4rev1 LITERAL+ ID AUTH=PLAIN SASL-IR] " )
+            .append(QtNetworkSettings::serverName().toAscii())
+            .append(" Cyrus IMAP4 v2.3.11-Mandriva-RPM-2.3.11-6mdv2008.1 server ready\r\n");
+
+        // Ubuntu 10.04; new test server
+        expected << QByteArray( "* OK " )
+            .append(QtNetworkSettings::serverLocalName().toAscii())
+            .append(" Cyrus IMAP4 v2.2.13-Debian-2.2.13-19 server ready\r\n");
+
+        // Feel free to add more as needed
+
+        Q_FOREACH (QByteArray const& ba, expected) {
+            if (ba == actual) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    static bool compareReplyFtp(QByteArray const& actual)
+    {
+        QList<QByteArray> expected;
+
+        // A few different vsFTPd versions.
+        // Feel free to add more as needed
+        expected << QByteArray( "220 (vsFTPd 2.0.5)\r\n221 Goodbye.\r\n" );
+        expected << QByteArray( "220 (vsFTPd 2.2.2)\r\n221 Goodbye.\r\n" );
+
+        Q_FOREACH (QByteArray const& ba, expected) {
+            if (ba == actual) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 #ifdef QT_NETWORK_LIB
-class QtNetworkSettingsInitializerCode {
-public:
-    QtNetworkSettingsInitializerCode() {
+    static bool verifyTestNetworkSettings()
+    {
         QHostInfo testServerResult = QHostInfo::fromName(QtNetworkSettings::serverName());
         if (testServerResult.error() != QHostInfo::NoError) {
             qWarning() << "Could not lookup" << QtNetworkSettings::serverName();
             qWarning() << "Please configure the test environment!";
             qWarning() << "See /etc/hosts or network-settings.h";
-            qFatal("Exiting");
+            return false;
         }
+        return true;
     }
-};
-QtNetworkSettingsInitializerCode qtNetworkSettingsInitializer;
 #endif
+};

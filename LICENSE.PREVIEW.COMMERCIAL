@@ -16,8 +16,8 @@ Agreement version 2.4
 This Technology Preview License Agreement ("Agreement")is a legal agreement
 between Digia USA, Inc. ("Digia"), with its registered office at 32 W.
 Loockerman Street, Suite 201, City of Dover, County of Kent, Delaware 19904,
-U.S.A. and you (either an individual or a legal entity) ("Licensee") for the
-Licensed Software (as defined below).
+U.S.A. and you (either an individual or a legal entity) ("Licensee")
+for the Licensed Software (as defined below).
 
 1. DEFINITIONS
 
@@ -100,7 +100,7 @@ copy of it or use the Licensed Software for any purpose that is not
 expressly granted in this Section 4. Licensee may not alter or remove
 any details of ownership, copyright, trademark or other property right
 connected with the Licensed Software. Licensee may not distribute any
-software statically or dynamically linked with the Licensed Software. 
+software statically or dynamically linked with the Licensed Software.
 
 4.3 No Technical Support
 
@@ -405,7 +405,7 @@ number of computers provided that (a) if an individual, only such
 individual; or (b) if a legal entity only its employees; use the
 Licensed Software for the authorized purposes.
 
-4.2	No Distribution or Modifications
+4.2 No Distribution or Modifications
 
 Licensee may not disclose, modify, sell, market, commercialise,
 distribute, loan, rent, lease, or license the Licensed Software or any
@@ -483,7 +483,7 @@ shall not exceed the total amount Licensee has paid to Digia in
 connection with this Agreement.
 
 
-9.	CONFIDENTIALITY
+9.  CONFIDENTIALITY
 
 Each party acknowledges that during the Term of this Agreement it shall
 have access to information about the other party's business, business
@@ -533,13 +533,13 @@ controlling over the terms of the Non-Disclosure Agreement.
 
 10. GENERAL PROVISIONS
 
-10.1	No Assignment
+10.1    No Assignment
 
 Licensee shall not be entitled to assign or transfer all or any of its
 rights, benefits and obligations under this Agreement without the prior
 written consent of Digia, which shall not be unreasonably withheld.
 
-10.2 	Termination
+10.2    Termination
 
 Digia may terminate the Agreement at any time immediately upon written
 notice by Digia to Licensee if Licensee breaches this Agreement.
@@ -556,7 +556,7 @@ Any terms and conditions that by their nature or otherwise reasonably
 should survive a cancellation or termination of this Agreement shall
 also be deemed to survive. Such terms and conditions include, but are
 not limited to the following Sections: 2, 5, 6, 7, 8, 9, 10.2, 10.3, 10.4,
-10.5, 10.6, 10.7, and 10.8 of this Agreement. 
+10.5, 10.6, 10.7, and 10.8 of this Agreement.
 
 10.4    Entire Agreement
 
